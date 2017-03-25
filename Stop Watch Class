@@ -1,0 +1,75 @@
+
+public class StopWatch {
+
+	/**
+	 * Accumulated elapsed time since the start of the run.
+	 */
+	private long elapsedTime;
+  
+	/**
+	 * The time at which this run started.
+	 */
+	private long startTime;
+  
+	/**
+	 * Flag to show whether the chronometer is running or not.
+	 */
+	private boolean isRunning;
+  
+	/**
+	 * Constructs a chronometer and puts it in the stopped state with no time.
+	 */
+	public StopWatch()
+	{
+		reset();
+	}
+  
+	/**
+	 * Starts the chronometer.  Time starts accumulating now.
+	 */
+	public void start()
+	{
+		if (isRunning) {return;}
+		isRunning = true;
+		startTime = System.nanoTime();
+//		startTime = System.currentTimeMillis(); //get the start time
+	}
+  
+	/**
+	 * Stops the chronometer.  Time stops accumulating and whatever time
+	 * has accumulated is added to the elapsed time.
+	 */
+	public void stop()
+	{
+		if (!isRunning) {return;}
+		isRunning = false;
+		long endTime = System.nanoTime();
+//		long endTime = System.currentTimeMillis();
+		elapsedTime = elapsedTime + endTime - startTime;
+	}
+  
+	/**
+	 * Returns the total elapsed time
+	 * @return the total elapsed time
+	 */
+	public long getElapsedTime()
+	{
+		if (isRunning)
+		{
+			long endTime = System.nanoTime();
+//			long endTime = System.currentTimeMillis();
+			return elapsedTime + endTime - startTime;
+		} else {
+			return elapsedTime;
+		}
+	}
+  
+	/**
+	 * Stops the watch and resets the elapsed time to 0.
+	 */
+	public void reset()
+	{
+		elapsedTime = 0;
+		isRunning = false;
+	}
+}
