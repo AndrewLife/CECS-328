@@ -19,4 +19,6 @@ ________________________________________________________________________________
 
 Through each Sorting algorithm, a sum of nanoseconds is calculated to show the average running time for function.
 
+Run Time is calculated by using Stop Watch Class.
+
 Finally, the program will calculate the maximum number of lines an Insertion Sort can run in one second.
